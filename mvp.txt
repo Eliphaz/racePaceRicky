@@ -1,0 +1,7 @@
+Race Pace Ricky will be a simple foot race predictor, It will take users previous best times, and give users a list of predicted best times.
+
+Users will be able to log in, and their times should be saved to their account.
+
+guests/Users will be able to enter times into our predictor, and should get predicted times outputted, this should be acsessable to users and guests
+
+users should have a account page, that saves best times, and shows predicted bests.
