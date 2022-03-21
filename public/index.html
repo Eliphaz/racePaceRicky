@@ -16,7 +16,10 @@
     <form>
         <p> How long was your previous race:</p>
         <input type="text" id="distance" placeholder="Distance">
-        <input type="text" id="units" placeholder="Units"><br>
+        <select id="unit" name="unit">
+        <option value="Miles">Miles</option>
+        <option value="Kilometers">Kilometers</option>
+        </select><br>
         <p>How difficult was the course:</p>
         <input type="radio" id="easy" value="easy" name="course_difficulty">
         <label for="easy">Easy</label>
@@ -36,7 +39,7 @@
            <thead>
                <tr id="topRow">
                    <th>Distance</th>
-                   <th>Time</th>
+                   <th>Estimated Time</th>
                    <th>Pace/mi</th>
                    <th>Pace/km</th>
                </tr>
@@ -92,4 +95,6 @@
        </table>
    </div>
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="index.js"></script>
 </html>
