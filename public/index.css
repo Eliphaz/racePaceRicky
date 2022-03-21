@@ -17,15 +17,24 @@ html {
 #mainHeader {
   color: #393e41;
   background-color: #44bba4;
+  padding: 5px;
 }
-#raceTimeTable {
+#timeTables {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.raceTimeTable {
+  width: 100%;
+  text-align: left;
   background-color: #f6f7eb;
+  border-collapse: collapse;
+}
+.raceTimeTable th {
+  background-color: #689bc5;
   color: #393e41;
 }
-
-#timeTables {
-  border-collapse: collapse;
-  margin: auto;
-  width: 50%;
+.raceTimeTable td,
+.raceTimeTable th {
   padding: 10px;
+  border: 1px solid #689bc5;
 }
