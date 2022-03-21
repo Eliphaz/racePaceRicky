@@ -13,9 +13,23 @@
 </header>
 <body>
    <div id="enterRaceForm">
-       <form>
-
-       </form>
+    <form>
+        <p> How long was your previous race:</p>
+        <input type="text" id="distance" placeholder="Distance">
+        <input type="text" id="units" placeholder="Units"><br>
+        <p>How difficult was the course:</p>
+        <input type="radio" id="easy" value="easy" name="course_difficulty">
+        <label for="easy">Easy</label>
+        <input type="radio" id="average" value="average" name="course_difficulty">
+        <label for="average">Average</label>
+        <input type="radio" id="hard" value="hard" name="course_difficulty">
+        <label for="hard">Hard</label><br>
+        <p>How long did it take:</p>
+        <input type="text" id="hours" placeholder="Hours">
+        <input type="text" id="minutes" placeholder="Minutes">
+        <input type="text" id="seconds" placeholder="Seconds"><br>
+        <input type="submit" value="Submit">
+      </form>
    </div> 
    <div id="timeTables">
        <table class="raceTimeTable">
