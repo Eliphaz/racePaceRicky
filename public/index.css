@@ -1,0 +1,31 @@
+mainColors {
+  color: #f6f7eb;
+  color: #44bba4;
+  color: #689bc5;
+  color: #393e41;
+  color: #e94f37;
+}
+
+html {
+  background-color: #f6f7eb;
+}
+
+#topRow {
+  background-color: #689bc5;
+}
+
+#mainHeader {
+  color: #393e41;
+  background-color: #44bba4;
+}
+#raceTimeTable {
+  background-color: #f6f7eb;
+  color: #393e41;
+}
+
+#timeTables {
+  border-collapse: collapse;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

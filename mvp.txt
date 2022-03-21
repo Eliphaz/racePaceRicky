@@ -1,7 +1,19 @@
 Race Pace Ricky will be a simple foot race predictor, It will take users previous best times, and give users a list of predicted best times.
 
+
+FEATURES:
+
 Users will be able to log in, and their times should be saved to their account.
 
 guests/Users will be able to enter times into our predictor, and should get predicted times outputted, this should be acsessable to users and guests
 
-users should have a account page, that saves best times, and shows predicted bests.
+guests/users should also get estimated training paces based off of their entered times.
+
+REQUESTS:
+app should get users info, and save race times to back end if user is logged in
+
+INTERACTIVE:
+buttons should darken on mouseover
+
+STYLING:
+use of CSS/color scheme TBA
