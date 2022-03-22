@@ -40,44 +40,16 @@ const estimateTimes = (raceDistance, time, raceDifficulty) => {
     }
 
 
-  
-    const tableObj = [
-        {distance : "1600 M", 
-        estimateTime: floatToTime(predictedTimes[0]),
-        paceMi: floatToTime(predictedTimes[0]/distances[0]),
-        paceKm: floatToTime(predictedTimes[0]/(distances[0]*1.61))},
+    const distanceStrings = ["1600 M","3200 M","5 K","10 K","Half Marathon","Marathon","50 K"]
+    const tableObj = []
 
-        {distance : "3200 M", 
-        estimateTime: floatToTime(predictedTimes[1]),
-        paceMi: floatToTime(predictedTimes[1]/distances[1]),
-        paceKm: floatToTime(predictedTimes[1]/(distances[1]*1.61))},
-
-        {distance : "5 K", 
-        estimateTime: floatToTime(predictedTimes[2]),
-        paceMi: floatToTime(predictedTimes[2]/distances[2]),
-        paceKm: floatToTime(predictedTimes[2]/(distances[2]*1.61))},
-
-        {distance : "10 K", 
-        estimateTime: floatToTime(predictedTimes[3]),
-        paceMi: floatToTime(predictedTimes[3]/distances[3]),
-        paceKm: floatToTime(predictedTimes[3]/(distances[3]*1.61))},
-
-        {distance : "Half Marathon", 
-        estimateTime: floatToTime(predictedTimes[4]),
-        paceMi: floatToTime(predictedTimes[4]/distances[4]),
-        paceKm: floatToTime(predictedTimes[4]/(distances[4]*1.61))},
-
-        {distance : "Marathon", 
-        estimateTime: floatToTime(predictedTimes[5]),
-        paceMi: floatToTime(predictedTimes[5]/distances[5]),
-        paceKm: floatToTime(predictedTimes[5]/(distances[5]*1.61))},
-
-        {distance : "50 K", 
-        estimateTime: floatToTime(predictedTimes[6]),
-        paceMi: floatToTime(predictedTimes[6]/distances[6]),
-        paceKm: floatToTime(predictedTimes[6]/(distances[6]*1.61))}
-]
-return tableObj
+    for(i in distanceStrings){
+        tableObj.push({distance : distanceStrings[i], 
+        estimateTime: floatToTime(predictedTimes[i]),
+        paceMi: floatToTime(predictedTimes[i]/distances[i]),
+        paceKm: floatToTime(predictedTimes[i]/(distances[i]*1.61))})
+    }
+        return tableObj
 }
 
 const populateTable = (tableObj) => {
