@@ -69,9 +69,46 @@ input[type="submit"]:hover {
   background-color: #389b87;
 }
 
+.headerButton {
+  text-align: center;
+  width: 15%;
+  background-color: #689bc5;
+  color: white;
+  padding: 20px 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.flex-box-2 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.headerButton:hover {
+  background-color: #5a86aa;
+}
+
 .center {
   margin: auto;
   width: 60%;
   border: 15px solid #f6f7eb;
   padding: 10px;
+}
+
+#loginFormDiv {
+  width: 40vw;
+  margin-top: 10%;
+  border-radius: 5px;
+  background-color: #689bc5;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+}
+#loginForm input[type="text"],
+input[type="submit"] {
+  margin: 3%;
+  margin-left: 5%;
+  width: 80%;
 }

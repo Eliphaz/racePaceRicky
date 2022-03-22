@@ -16,7 +16,7 @@ raceForm.addEventListener('submit',(event)=>{
     event.preventDefault()
 
     if(raceUnit == 'Kilometers'){
-        raceDistance /= .621371
+        raceDistance *= .621371
     }
 
     populateTable(estimateTimes(raceDistance, raceTime, raceDifficulty))
@@ -29,18 +29,12 @@ const estimateTimes = (raceDistance, time, raceDifficulty) => {
     let predictedTimes = []
     let difficulty = raceDifficulty
     
-    for(i in distances){
+    for(i = 0; i < distances.length; i++){
       let multiplier = 1.06
-      if(difficulty == 'hard'){multiplier -= .05}
-      if(difficulty == 'easy'){multiplier += .05}
-       let predictedTime = time * (distances[i]/raceDistance)*multiplier
-      if(distances[i] == raceDistance){
-        predictedTime = time
-      }
-      if(distances[i]<raceDistance){
-        multiplier -= .12
-        predictedTime = time * (distances[i]/raceDistance)*multiplier
-      }
+      let difficultyMultiplier = 1
+      if(difficulty == 'hard'){difficultyMultiplier -= .05}
+      if(difficulty == 'easy'){difficultyMultiplier += .05}
+       let predictedTime = (time * (distances[i]/raceDistance)**multiplier) * difficultyMultiplier
        predictedTimes.push(predictedTime)
        
     }
@@ -94,8 +88,7 @@ return tableObj
 const populateTable = (tableObj) => {
     const table = document.getElementById('raceTableBody')
 
-    for(let i = table.rows.length -1; i > -1; i--)
-    {
+    for(let i = table.rows.length -1; i > -1; i--){
         table.deleteRow(i);
     }
 
