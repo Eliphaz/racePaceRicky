@@ -2,16 +2,17 @@ console.log('javascript loaded')
 
 raceForm = document.querySelector('form')
 estimatedTimeTable = document.getElementsByClassName('raceTimeTable')
-console.log(estimatedTimeTable[0].innerHTML)
 
 raceForm.addEventListener('submit',(event)=>{
     let raceDistance = event.target.elements['distance'].value
+    raceDistance = +raceDistance
     let raceUnit = event.target.elements['unit'].value
     let raceDifficulty = event.target.elements['course_difficulty'].value
     let raceHours = event.target.elements['hours'].value || 0
     let raceMinutes = event.target.elements['minutes'].value || 0
     let raceSeconds = event.target.elements['seconds'].value || 0
-    let raceTime = (raceSeconds * 60) + raceMinutes + (raceHours/60)
+    let raceTime = (parseInt(raceHours) * 3600) + (parseInt(raceMinutes) * 60) + parseInt(raceSeconds)
+    raceTime /= 60
     event.preventDefault()
 
     if(raceUnit == 'Kilometers'){
@@ -41,6 +42,7 @@ const estimateTimes = (raceDistance, time, raceDifficulty) => {
         predictedTime = time * (distances[i]/raceDistance)*multiplier
       }
        predictedTimes.push(predictedTime)
+       
     }
 
 
@@ -109,3 +111,4 @@ const populateTable = (tableObj) => {
         paceKm.innerHTML = element.paceKm
     });
 }
+

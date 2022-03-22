@@ -24,10 +24,10 @@ html {
   margin-right: 10vw;
 }
 .raceTimeTable {
+  border-collapse: collapse;
   width: 100%;
   text-align: left;
   background-color: #f6f7eb;
-  border-collapse: collapse;
 }
 .raceTimeTable th {
   background-color: #689bc5;
@@ -37,4 +37,41 @@ html {
 .raceTimeTable th {
   padding: 10px;
   border: 1px solid #689bc5;
+}
+
+#raceFormDiv {
+  border-radius: 5px;
+  background-color: #689bc5;
+}
+
+input[type="text"],
+select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #44bba4;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #389b87;
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+  border: 15px solid #f6f7eb;
+  padding: 10px;
 }
