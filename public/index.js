@@ -43,44 +43,39 @@ const estimateTimes = (raceDistance, time, raceDifficulty) => {
   
     const tableObj = [
         {distance : "1600 M", 
-        estimateTime: predictedTimes[0],
-        paceMi: predictedTimes[0]/distances[0],
-        paceKm: predictedTimes[0]/(distances[0]*1.61)},
+        estimateTime: floatToTime(predictedTimes[0]),
+        paceMi: floatToTime(predictedTimes[0]/distances[0]),
+        paceKm: floatToTime(predictedTimes[0]/(distances[0]*1.61))},
 
         {distance : "3200 M", 
-        estimateTime: predictedTimes[1],
-        paceMi: predictedTimes[1]/distances[1],
-        paceKm: predictedTimes[1]/(distances[1]*1.61)},
+        estimateTime: floatToTime(predictedTimes[1]),
+        paceMi: floatToTime(predictedTimes[1]/distances[1]),
+        paceKm: floatToTime(predictedTimes[1]/(distances[1]*1.61))},
 
         {distance : "5 K", 
-        estimateTime: predictedTimes[2],
-        paceMi: predictedTimes[2]/distances[2],
-        paceKm: predictedTimes[2]/(distances[2]*1.61)},
+        estimateTime: floatToTime(predictedTimes[2]),
+        paceMi: floatToTime(predictedTimes[2]/distances[2]),
+        paceKm: floatToTime(predictedTimes[2]/(distances[2]*1.61))},
 
         {distance : "10 K", 
-        estimateTime: predictedTimes[3],
-        paceMi: predictedTimes[3]/distances[3],
-        paceKm: predictedTimes[3]/(distances[3]*1.61)},
+        estimateTime: floatToTime(predictedTimes[3]),
+        paceMi: floatToTime(predictedTimes[3]/distances[3]),
+        paceKm: floatToTime(predictedTimes[3]/(distances[3]*1.61))},
 
         {distance : "Half Marathon", 
-        estimateTime: predictedTimes[4],
-        paceMi: predictedTimes[4]/distances[4],
-        paceKm: predictedTimes[4]/(distances[4]*1.61)},
+        estimateTime: floatToTime(predictedTimes[4]),
+        paceMi: floatToTime(predictedTimes[4]/distances[4]),
+        paceKm: floatToTime(predictedTimes[4]/(distances[4]*1.61))},
 
         {distance : "Marathon", 
-        estimateTime: predictedTimes[5],
-        paceMi: predictedTimes[5]/distances[5],
-        paceKm: predictedTimes[5]/(distances[5]*1.61)},
+        estimateTime: floatToTime(predictedTimes[5]),
+        paceMi: floatToTime(predictedTimes[5]/distances[5]),
+        paceKm: floatToTime(predictedTimes[5]/(distances[5]*1.61))},
 
         {distance : "50 K", 
-        estimateTime: predictedTimes[6],
-        paceMi: predictedTimes[6]/distances[6],
-        paceKm: predictedTimes[6]/(distances[6]*1.61)},
-
-        {distance : "50 M", 
-        estimateTime: predictedTimes[7],
-        paceMi: predictedTimes[7]/distances[7],
-        paceKm: predictedTimes[7]/(distances[7]*1.61)}
+        estimateTime: floatToTime(predictedTimes[6]),
+        paceMi: floatToTime(predictedTimes[6]/distances[6]),
+        paceKm: floatToTime(predictedTimes[6]/(distances[6]*1.61))}
 ]
 return tableObj
 }
@@ -105,3 +100,23 @@ const populateTable = (tableObj) => {
     });
 }
 
+const floatToTime = (float) => {
+    if(float > 0){
+        let minutes = Math.floor(float)
+        let secondsDec = float - minutes
+        let sec = 1 / 60
+        secondsDec = sec * Math.round(secondsDec / sec)
+        let seconds = Math.floor(secondsDec * 60) + ''
+        if(seconds.length < 2){
+            seconds = '0' + seconds
+        }
+      time = minutes + ':' + seconds
+      if(minutes > 60){
+        hours = Math.floor(minutes/60)
+        minutes = minutes % 60
+        time = hours + ':' + minutes + ':' + seconds
+      
+      }
+    }
+      return time
+}
