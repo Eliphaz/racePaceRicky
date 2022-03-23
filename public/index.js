@@ -3,6 +3,7 @@ console.log('javascript loaded')
 raceForm = document.querySelector('form')
 estimatedTimeTable = document.getElementsByClassName('raceTimeTable')
 
+
 raceForm.addEventListener('submit',(event)=>{
     let raceDistance = event.target.elements['distance'].value
     raceDistance = +raceDistance
@@ -22,6 +23,8 @@ raceForm.addEventListener('submit',(event)=>{
     populateTable(estimateTimes(raceDistance, raceTime, raceDifficulty))
 
 })
+
+axios.get('/currentUser').then(res => alert(`current user is${res.data.username}`))
 
 
 const estimateTimes = (raceDistance, time, raceDifficulty) => {

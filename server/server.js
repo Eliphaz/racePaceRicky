@@ -1,6 +1,8 @@
 let users = [{username: 'john doe',
               password:'qwe123'}]
 
+let currentUser = null
+
 const express = require('express')
 const bcryptjs = require('bcryptjs')
 const { userInfo } = require('os')
@@ -36,6 +38,9 @@ app.get('/createAccountjs', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/createAccount.js'))
 })
 
+app.get('/currentUser', (req,res)=>{
+  return res.status(200).send(currentUser)
+})
 
 app.post('/loginAuth', (req,res)=>{
   console.log('hit login auth')
@@ -43,25 +48,26 @@ app.post('/loginAuth', (req,res)=>{
 
       for (let i = 0; i < users.length; i++) {
         if (users[i].username === username && bcryptjs.compareSync(password, users[i].password)) {
-          return res.status(200).send(`welcome ${username}`)
+          currentUser = req.body
+          return res.status(200).send(`welcome ${currentUser.username}`)
         }
       }
       return res.status(400).send("User not found.")
 })
 
 app.put('/createAccountAuth', (req,res)=>{
-  let {password} = req.body
+  let {password, username} = req.body
       const salt = bcryptjs.genSaltSync(5)
       const pinHash = bcryptjs.hashSync(password, salt)
 
       req.body.password = pinHash
   for(i in users){
-    console.log(users[i].username)
-    if(users[i].username == req.body.username){
-      res.status(400).send('username already in use')
+    console.log(users[i].username, req.body.username)
+    if(users[i].username === username){
+      return res.status(400).send('username already in use')
     }else{
-      users.push(req.body) 
-      res.status(200).send('account sucsessfully registered')
+      users.push(req.body)
+      return res.status(200).send('account sucsessfully registered')
     }
   }
   
