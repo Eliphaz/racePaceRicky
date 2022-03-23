@@ -65,6 +65,7 @@ h1 {
 }
 
 input[type="text"],
+[type="password"],
 select {
   width: 30%;
   padding: 12px 20px;
@@ -127,7 +128,8 @@ input[type="submit"]:hover {
   border-radius: 10px;
 }
 #loginForm input[type="text"],
-input[type="submit"] {
+input[type="submit"],
+input[type="password"] {
   margin: 3%;
   margin-left: 5%;
   width: 80%;

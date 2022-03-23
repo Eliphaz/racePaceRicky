@@ -1,7 +1,5 @@
 console.log('hello from loginjs')
 
-const bcryptjs = require('bcryptjs')
-
 username = document.getElementById('username')
 password = document.getElementById('password')
 loginBtn = document.getElementById('loginBtn')
@@ -13,5 +11,8 @@ loginForm.addEventListener('submit',(event)=>{
         username: username.value,
         password: password.value
     }
-    console.log(userObj)
+    axios.post('/loginAuth', userObj).then(
+        res => alert(res.data)
+    )
+    
 })

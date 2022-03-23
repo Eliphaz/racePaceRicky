@@ -16,4 +16,4 @@ INTERACTIVE:
 buttons should darken on mouseover
 
 STYLING:
-use of CSS/color scheme TBA
+off white background with light green and blue theme
