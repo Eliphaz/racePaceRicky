@@ -23,9 +23,11 @@ raceForm.addEventListener('submit',(event)=>{
     populateTable(estimateTimes(raceDistance, raceTime, raceDifficulty))
 
 })
-
-axios.get('/currentUser').then(res => alert(`current user is${res.data.username}`))
-
+currentUser = axios.get('/currentUser').then(res => res.data)
+console.log(currentUser)
+if(currentUser.username != undefined){
+    alert(`the current user is ${currentUser.username}`)
+}
 
 const estimateTimes = (raceDistance, time, raceDifficulty) => {
     let distances = [.99, 1.98, 3.11, 6.21,13.1,26.2,31.1,50,62.14]

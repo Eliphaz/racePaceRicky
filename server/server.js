@@ -1,5 +1,5 @@
-let users = [{username: 'john doe',
-              password:'qwe123'}]
+//let users = [{username: 'john doe',
+//              password:'qwe123'}]
 
 let currentUser = null
 
@@ -29,12 +29,18 @@ const sequelize = new Sequelize(CONNECTION_STRING,{
 const seed = (req,res) => {
   sequelize.query(`
   CREATE TABLE users (
-    username int,
+    username varchar(64),
     password varchar(255),
     races text
     );`).then(dbRes => res.status(200).send(dbRes[0]))
     .catch(err => console.log(err))
 }
+
+let users = sequelize.query(`select *
+from users;`)
+.then(dbRes => users = dbRes[0])
+.catch(err => console.log(err))
+
 
 app.get('/styles', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/index.css'))
@@ -90,8 +96,10 @@ app.put('/createAccountAuth', (req,res)=>{
       return res.status(400).send('username already in use')
     }else{
       users.push(req.body)
-      sequelize.query(`insert into users`)
-      return res.status(200).send('account sucsessfully registered')
+      sequelize.query(`insert into users (username, password)
+                  values ('${req.body.username}','${req.body.password}');`)
+                  .then(dbRes => res.status(200).send(dbRes[0]))
+                  .catch(err => console.log(err))
     }
   }
   
