@@ -13,6 +13,29 @@ app.use(express.json())
 
 app.use(express.static(path.join(__dirname, '../public/')))
 
+
+require('dotenv').config()
+const {CONNECTION_STRING} = process.env
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(CONNECTION_STRING,{
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+  })
+
+const seed = (req,res) => {
+  sequelize.query(`
+  CREATE TABLE users (
+    username int,
+    password varchar(255),
+    races text
+    );`).then(dbRes => res.status(200).send(dbRes[0]))
+    .catch(err => console.log(err))
+}
+
 app.get('/styles', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/index.css'))
 })
@@ -67,27 +90,13 @@ app.put('/createAccountAuth', (req,res)=>{
       return res.status(400).send('username already in use')
     }else{
       users.push(req.body)
+      sequelize.query(`insert into users`)
       return res.status(200).send('account sucsessfully registered')
     }
   }
   
  
 })
-
-
-require('dotenv').config()
-const {CONNECTION_STRING} = process.env
-
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize(CONNECTION_STRING,{
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
-  })
-
 
 
 const port = process.env.PORT || 5050
