@@ -5,7 +5,6 @@ let currentUser = null
 
 const express = require('express')
 const bcryptjs = require('bcryptjs')
-const { userInfo } = require('os')
 const path = require('path')
 const app = express()
 
@@ -79,9 +78,9 @@ app.post('/loginAuth', (req,res)=>{
         if (users[i].username === username && bcryptjs.compareSync(password, users[i].password)) {
           currentUser = req.body
           return res.status(200).send(`welcome ${currentUser.username}`)
-        }
+        }return res.status(400).send("User not found.")
       }
-      return res.status(400).send("User not found.")
+      
 })
 
 app.put('/createAccountAuth', (req,res)=>{
@@ -91,7 +90,6 @@ app.put('/createAccountAuth', (req,res)=>{
 
       req.body.password = pinHash
   for(i in users){
-    console.log(users[i].username, req.body.username)
     if(users[i].username === username){
       return res.status(400).send('username already in use')
     }else{

@@ -1,3 +1,4 @@
+
 console.log('hello from loginjs')
 
 username = document.getElementById('username')
@@ -13,6 +14,7 @@ loginForm.addEventListener('submit',(event)=>{
     }
     axios.post('/loginAuth', userObj).then(
         res => alert(res.data)
-    )
+    ).catch(err => alert(`${err} user not found`))
+
     
 })
