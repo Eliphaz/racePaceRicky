@@ -1,6 +1,3 @@
-//let users = [{username: 'john doe',
-//              password:'qwe123'}]
-
 let currentUser = null
 
 const express = require('express')
@@ -10,7 +7,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(__dirname, '../public/')))
 
 
 require('dotenv').config()
@@ -41,30 +38,30 @@ from users;`)
 console.log(users)})
 .catch(err => console.log(err))
 
-// app.get('/styles', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/index.css'))
-// })
+app.get('/styles', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/index.css'))
+})
 
-// app.get('/js', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/index.js'))
-// })
+app.get('/js', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/index.js'))
+})
 
-// app.get('/login', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/login.html'))
-// })
+app.get('/login', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/login.html'))
+})
 
-// app.get('/aboutUs', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/aboutUs.html'))
-// })
-// app.get('/createAccount', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/createAccount.html'))
-// })
-// app.get('/loginjs', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/login.js'))
-// })
-// app.get('/createAccountjs', (req,res)=>{
-//   res.sendFile(path.join(__dirname,'../public/createAccount.js'))
-// })
+app.get('/aboutUs', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/aboutUs.html'))
+})
+app.get('/createAccount', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/createAccount.html'))
+})
+app.get('/loginjs', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/login.js'))
+})
+app.get('/createAccountjs', (req,res)=>{
+  res.sendFile(path.join(__dirname,'../public/createAccount.js'))
+})
 
 app.get('/currentUser', (req,res)=>{
   if(currentUser){
