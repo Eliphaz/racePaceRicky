@@ -169,5 +169,3 @@ const mitoKmPace = paceStr => {
     return minutes + ":" + seconds
   }
   
-  console.log(mitoKmPace('8:35'))
-  
