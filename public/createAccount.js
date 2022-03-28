@@ -17,7 +17,7 @@ loginForm.addEventListener('submit',(event)=>{
     if(newUserObj.password == confirmPasswordValue){
     axios.put('/createAccountAuth', newUserObj).then(
         res => alert('account sucsessfully registered')
-    )}else{
+    ).catch(err => console.log(err.data))}else{
         alert('passwords do not match')
         password.value = ''
         confirmPassword.value = ''

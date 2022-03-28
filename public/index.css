@@ -18,6 +18,19 @@ html {
   background-color: #f6f7eb;
 }
 
+.loginLink {
+  font-family: "Fugaz One";
+  color: #f6f7eb;
+  text-decoration: none;
+  border: 2px solid #f6f7eb;
+  padding: 5px;
+  border-radius: 10px;
+  width: 35vw;
+}
+a:hover {
+  background-color: #5a86aa;
+}
+
 h1 {
   margin-top: 20px;
   font-family: "Fugaz One";
@@ -93,10 +106,12 @@ input[type="submit"]:hover {
 }
 
 .headerButton {
+  font-family: "Fugaz One";
+  color: #f6f7eb;
+  text-decoration: none;
   text-align: center;
   width: 15%;
   background-color: #689bc5;
-  color: white;
   padding: 20px 10px;
   margin: 10px 0;
   border: none;
@@ -121,6 +136,7 @@ input[type="submit"]:hover {
 }
 
 #loginFormDiv {
+  padding-bottom: 50px;
   width: 40vw;
   margin-top: 10%;
   border-radius: 5px;
@@ -140,12 +156,52 @@ input[type="password"] {
 .aboutUsDiv {
   background-color: #689bc5;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   width: 40%;
-  border: 2px solid black;
   border-radius: 10px;
   padding: 10px;
 }
 .aboutUsDiv p {
   color: #f6f7eb;
+}
+.tableBtn {
+  font-family: "Fugaz One";
+  color: #f6f7eb;
+  text-decoration: none;
+  text-align: center;
+  width: 30%;
+  background-color: #689bc5;
+  padding: 20px 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.tableBtn:hover {
+  background-color: #5a86aa;
+}
+
+#pacetimeTables {
+  display: none;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.paceTimeTable {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  background-color: #f6f7eb;
+}
+.paceTimeTable th {
+  background-color: #44bba4;
+  color: #393e41;
+}
+.paceTimeTable td,
+.paceTimeTable th {
+  padding: 10px;
+  border: 1px solid #44bba4;
+}
+.tableBtnsDiv {
+  margin-left: 10vw;
+  margin-right: 10vw;
 }

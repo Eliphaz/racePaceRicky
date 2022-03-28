@@ -39,8 +39,13 @@ href="https://fonts.googleapis.com/css?family=Fugaz+One">
         <input type="text" id="seconds" placeholder="Seconds"><br>
         <input type="submit" value="Submit">
       </form>
-   </div> 
+   </div>   
+   <div class="tableBtnsDiv">    
+        <button class="tableBtn" id="raceBtn">Race Paces</button>
+       <button class="tableBtn" id="paceBtn">Training Paces</button>
+    </div> 
    <div id="timeTables">
+
        <table class="raceTimeTable">
            <thead>
                <tr id="topRow">
@@ -97,6 +102,51 @@ href="https://fonts.googleapis.com/css?family=Fugaz+One">
        </table>
        <p>* Please note that times will be less accurate for longer distances where fueling, hydration, and cardiac drift are more of a factor, and when comparing distances of great difference (half marathon is a better predictor of marathon than 1 mile).</p>
    </div>
+
+   <div id="pacetimeTables">
+    <table class="paceTimeTable">
+        <thead>
+            <tr id="topRow">
+                <th>Workout Type</th>
+                <th>Pace/mi</th>
+                <th>Pace/km</th>
+            </tr>
+        </thead>
+        <tbody id="raceTableBody">
+        <tr>
+         <td>Easy</td>
+         <td></td>
+         <td></td>
+     </tr>
+     <tr>
+         <td>Long Run</td>
+         <td></td>
+         <td></td>
+     </tr>
+     <tr>
+         <td>Tempo</td>
+         <td></td>
+         <td></td>
+     </tr>
+     <tr>
+         <td>Threshold</td>
+         <td></td>
+         <td></td>
+     </tr>
+     <tr>
+         <td>Vo2Max</td>
+         <td></td>
+         <td></td>
+     </tr>
+     <tr>
+         <td>Neuromuscular</td>
+         <td></td>
+         <td></td>
+     </tr>
+ </tbody>
+    </table><br>
+</div>
+
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js"></script>

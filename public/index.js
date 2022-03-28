@@ -3,6 +3,30 @@ console.log('javascript loaded')
 raceForm = document.querySelector('form')
 estimatedTimeTable = document.getElementsByClassName('raceTimeTable')
 
+raceBtn = document.getElementById('raceBtn')
+paceBtn = document.getElementById('paceBtn')
+
+paceDiv = document.getElementById('pacetimeTables')
+raceDiv = document.getElementById('timeTables')
+
+raceBtn.onclick = () => {
+    if (paceDiv.style.display !== "none") {
+      paceDiv.style.display = "none";
+      raceDiv.style.display = "block";
+    } else {
+      raceDiv.style.display = "block";
+    }
+  };
+
+  paceBtn.onclick = () => {
+    if (raceDiv.style.display !== "none") {
+      raceDiv.style.display = "none";
+      paceDiv.style.display = "block";
+    } else {
+      paceDiv.style.display = "block";
+    }
+  };
+
 
 raceForm.addEventListener('submit',(event)=>{
     let raceDistance = event.target.elements['distance'].value
@@ -16,6 +40,8 @@ raceForm.addEventListener('submit',(event)=>{
     raceTime /= 60
     event.preventDefault()
 
+    console.log({'distance':raceDistance,'unit': raceUnit,'difficulty':raceDifficulty,'hours':raceHours,'minutes':raceMinutes,'seconds':raceSeconds})
+
     if(raceUnit == 'Kilometers'){
         raceDistance *= .621371
     }
@@ -23,8 +49,8 @@ raceForm.addEventListener('submit',(event)=>{
     populateTable(estimateTimes(raceDistance, raceTime, raceDifficulty))
 
 })
-currentUser = axios.get('/currentUser').then(res => res.data)
-console.log(currentUser)
+currentUser = axios.get('/currentUser').then(res => {currentUser = res.data|| false}) 
+console.log(currentUser.username)
 if(currentUser.username != undefined){
     alert(`the current user is ${currentUser.username}`)
 }
@@ -75,6 +101,7 @@ const populateTable = (tableObj) => {
         let paceKm = row.insertCell(3)
         paceKm.innerHTML = element.paceKm
     });
+    console.log(tableObj)
 }
 
 const floatToTime = (float) => {
@@ -96,4 +123,8 @@ const floatToTime = (float) => {
       }
     }
       return time
+}
+
+const populateUserRaces = (user) =>{
+
 }

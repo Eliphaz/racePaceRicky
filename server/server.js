@@ -37,9 +37,9 @@ const seed = (req,res) => {
 
 let users = sequelize.query(`select *
 from users;`)
-.then(dbRes => users = dbRes[0])
+.then(dbRes => {users = dbRes[0]
+console.log(users)})
 .catch(err => console.log(err))
-
 
 app.get('/styles', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/index.css'))
@@ -67,20 +67,23 @@ app.get('/createAccountjs', (req,res)=>{
 })
 
 app.get('/currentUser', (req,res)=>{
+  if(currentUser){
   return res.status(200).send(currentUser)
+}return res.status(200).send(false)
 })
 
 app.post('/loginAuth', (req,res)=>{
   console.log('hit login auth')
   const { username, password } = req.body
-
+  userinDb = false
       for (let i = 0; i < users.length; i++) {
         if (users[i].username === username && bcryptjs.compareSync(password, users[i].password)) {
+          userinDb = true}
+      }
+      if(userinDb){
           currentUser = req.body
           return res.status(200).send(`welcome ${currentUser.username}`)
-        }return res.status(400).send("User not found.")
-      }
-      
+        }return res.status(400).send("User not found.") 
 })
 
 app.put('/createAccountAuth', (req,res)=>{
@@ -98,6 +101,7 @@ app.put('/createAccountAuth', (req,res)=>{
                   values ('${req.body.username}','${req.body.password}');`)
                   .then(dbRes => res.status(200).send(dbRes[0]))
                   .catch(err => console.log(err))
+                  return
     }
   }
   
