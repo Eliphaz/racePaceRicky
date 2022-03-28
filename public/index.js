@@ -56,7 +56,7 @@ if(currentUser.username != undefined){
 }
 
 const estimateTimes = (raceDistance, time, raceDifficulty) => {
-    let distances = [.99, 1.98, 3.11, 6.21,13.1,26.2,31.1,50,62.14]
+    let distances = [.99, 1.98, 3.11, 6.21,13.1,26.2,31.1]
     let predictedTimes = []
     let difficulty = raceDifficulty
     
@@ -85,11 +85,42 @@ const estimateTimes = (raceDistance, time, raceDifficulty) => {
 
 const populateTable = (tableObj) => {
     const table = document.getElementById('raceTableBody')
+    const paceTable = document.getElementById('paceTableBody')
+
+    for(let i = paceTable.rows.length -1; i > -1; i--){
+        paceTable.deleteRow(i);
+    }
+    const workoutTypes = ['Easy','Long Run', 'Tempo', 'Threshold', 'Vo2Max', 'Neuromuscular']
+
+    let easyPace = tableObj[6].paceMi.split(':')
+    easyPace[0] = (+easyPace[0] + 2).toString()
+    easyPace = easyPace.join(':')
+
+    let longPace = tableObj[3].paceMi.split(':')
+    longPace[0] = (+longPace[0] + 1).toString()
+    longPace = longPace.join(':')
+
+    let neuroPace = tableObj[2].paceMi.split(':')
+    neuroPace[0] = (+neuroPace[0] -1).toString()
+    neuroPace = neuroPace.join(':')
+
+    const workoutPaces = [easyPace,longPace,tableObj[5].paceMi,tableObj[3].paceMi,tableObj[0].paceMi, neuroPace]
+    console.log(typeof(tableObj[0].paceMi))
+    
+    workoutTypes.forEach((element,index) => {
+        let row = paceTable.insertRow()
+        let workoutType = row.insertCell(0)
+        workoutType.innerHTML = element
+        let paceMi = row.insertCell(1)
+        paceMi.innerHTML = workoutPaces[index]
+        let paceKm = row.insertCell(2)
+        paceKm.innerHTML = mitoKmPace(workoutPaces[index])
+    })
 
     for(let i = table.rows.length -1; i > -1; i--){
         table.deleteRow(i);
     }
-
+console.log(tableObj)
     tableObj.forEach(element => {
         let row = table.insertRow()
         let distance = row.insertCell(0)
@@ -100,8 +131,9 @@ const populateTable = (tableObj) => {
         paceMi.innerHTML = element.paceMi
         let paceKm = row.insertCell(3)
         paceKm.innerHTML = element.paceKm
-    });
-    console.log(tableObj)
+    })
+
+
 }
 
 const floatToTime = (float) => {
@@ -125,6 +157,17 @@ const floatToTime = (float) => {
       return time
 }
 
-const populateUserRaces = (user) =>{
-
-}
+const mitoKmPace = paceStr => {
+    paceStr = paceStr.split(':')
+    totalSeconds = +paceStr[0] * 60 + +paceStr[1]
+    kmSeconds = totalSeconds *= .621371
+    let minutes = Math.floor(kmSeconds/60)
+    let seconds = Math.round(kmSeconds % 60)
+    if(seconds.toString().length == 1){
+      seconds = seconds + "0"
+    }
+    return minutes + ":" + seconds
+  }
+  
+  console.log(mitoKmPace('8:35'))
+  
