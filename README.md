@@ -22,3 +22,5 @@
 - run npm i
 - start server with nodemon/node server/server.js
 - visit localhost 5050 in a browser
+
+![Race Pace Ricky Home Page](images/homepage.png)
