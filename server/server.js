@@ -32,6 +32,7 @@ const seed = (req,res) => {
     .catch(err => console.log(err))
 }
 
+
 let users = sequelize.query(`select *
 from users;`)
 .then(dbRes => {users = dbRes[0]

@@ -1,4 +1,4 @@
-let username = 'donne'
+let username = 'jeddy'
 let password = 'asdf123'
 
 describe('Create User and Login', () => {
@@ -35,5 +35,27 @@ describe('Create User and Login', () => {
     it('checks website is up', () => {
       cy.visit('http://localhost:5050/')
     })
+    it('enters race data', ()=>{
+        cy.get('[id="distance"]').click().type(`42.2`)
+        cy.get('[id="unit"]').select('Kilometers')
+        cy.get('[id="easy"]').click()
+        cy.get('[id="hours"]').click().type(`3`)
+        cy.get('[id="minutes"]').click().type(`9`)
+        cy.get('[id="seconds"]').click().type(`21`)
+        cy.get('input').contains('Submit').click()
+        cy.get('[id="raceBtn"]').click()
+        cy.get('[class="raceTimeTable"]').should('be.visible')
+    })
 
+    it('confirms training paces table is visible', ()=>{
+        cy.get('[id="paceBtn"]').click()
+        cy.get('[class="paceTimeTable"]').should('be.visible')
+    })
+
+})
+
+describe('visits about page', () => {
+    it('visits about page', () => {
+        cy.get('a').contains('About Us').click()
+    })
 })

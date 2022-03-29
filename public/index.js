@@ -105,7 +105,6 @@ const populateTable = (tableObj) => {
     neuroPace = neuroPace.join(':')
 
     const workoutPaces = [easyPace,longPace,tableObj[5].paceMi,tableObj[3].paceMi,tableObj[0].paceMi, neuroPace]
-    console.log(typeof(tableObj[0].paceMi))
     
     workoutTypes.forEach((element,index) => {
         let row = paceTable.insertRow()
