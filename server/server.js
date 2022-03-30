@@ -13,14 +13,14 @@ app.use(express.static(path.join(__dirname, '../public/')))
 require('dotenv').config()
 const {CONNECTION_STRING} = process.env
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize(CONNECTION_STRING,{
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
-  })
+// const sequelize = new Sequelize(CONNECTION_STRING,{
+//     dialect: 'postgres',
+//     dialectOptions: {
+//         ssl: {
+//             rejectUnauthorized: false
+//         }
+//     }
+//   })
 
 // const seed = (req,res) => {
 //   sequelize.query(`
@@ -64,11 +64,6 @@ app.get('/createAccountjs', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/createAccount.js'))
 })
 
-app.get('/currentUser', (req,res)=>{
-  if(currentUser){
-  return res.status(200).send(currentUser)
-}return res.status(200).send(false)
-})
 
 app.post('/loginAuth', (req,res)=>{
   console.log('hit login auth')
@@ -82,6 +77,12 @@ app.post('/loginAuth', (req,res)=>{
           currentUser = req.body
           return res.status(200).send(`welcome ${currentUser.username}`)
         }return res.status(400).send("User not found.") 
+})
+
+app.get('/currentUser', (req,res)=>{
+  if(currentUser){
+  return res.status(200).send(currentUser)
+}return res.status(200).send(false)
 })
 
 app.put('/createAccountAuth', (req,res)=>{
