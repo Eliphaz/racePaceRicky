@@ -22,15 +22,15 @@ const sequelize = new Sequelize(CONNECTION_STRING,{
     }
   })
 
-const seed = (req,res) => {
-  sequelize.query(`
-  CREATE TABLE users (
-    username varchar(64),
-    password varchar(255),
-    races text
-    );`).then(dbRes => res.status(200).send(dbRes[0]))
-    .catch(err => console.log(err))
-}
+// const seed = (req,res) => {
+//   sequelize.query(`
+//   CREATE TABLE users (
+//     username varchar(64),
+//     password varchar(255),
+//     races text
+//     );`).then(dbRes => res.status(200).send(dbRes[0]))
+//     .catch(err => console.log(err))
+// }
 
 
 // let users = sequelize.query(`select *
