@@ -22,22 +22,22 @@ const Sequelize = require('sequelize')
 //     }
 //   })
 
-// const seed = (req,res) => {
-//   sequelize.query(`
-//   CREATE TABLE users (
-//     username varchar(64),
-//     password varchar(255),
-//     races text
-//     );`).then(dbRes => res.status(200).send(dbRes[0]))
-//     .catch(err => console.log(err))
-// }
+const seed = (req,res) => {
+  sequelize.query(`
+  CREATE TABLE users (
+    username varchar(64),
+    password varchar(255),
+    races text
+    );`).then(dbRes => res.status(200).send(dbRes[0]))
+    .catch(err => console.log(err))
+}
 
 
-// let users = sequelize.query(`select *
-// from users;`)
-// .then(dbRes => {users = dbRes[0]
-// console.log(users)})
-// .catch(err => console.log(err))
+let users = sequelize.query(`select *
+from users;`)
+.then(dbRes => {users = dbRes[0]
+console.log(users)})
+.catch(err => console.log(err))
 
 app.get('/styles', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/index.css'))
