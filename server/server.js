@@ -33,11 +33,11 @@ const seed = (req,res) => {
 }
 
 
-let users = sequelize.query(`select *
-from users;`)
-.then(dbRes => {users = dbRes[0]
-console.log(users)})
-.catch(err => console.log(err))
+// let users = sequelize.query(`select *
+// from users;`)
+// .then(dbRes => {users = dbRes[0]
+// console.log(users)})
+// .catch(err => console.log(err))
 
 app.get('/styles', (req,res)=>{
   res.sendFile(path.join(__dirname,'../public/index.css'))
